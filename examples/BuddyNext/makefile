@@ -852,7 +852,6 @@ next-mul-manual-run:
 		-func-bufferize \
 		-arith-bufferize \
 		-tensor-bufferize \
-		-buffer-deallocation \
 		-finalizing-bufferize \
 		-convert-vector-to-scf \
 		-expand-strided-metadata \
