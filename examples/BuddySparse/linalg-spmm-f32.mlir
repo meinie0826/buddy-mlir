@@ -194,10 +194,11 @@ func.func @main() {
   %result = call @alloc_f32(%c4, %c3, %f0) : (index, index, f32) -> memref<?x?xf32>
   
   // CHECK: Unranked Memref base@ = {{.*}} rank = 2 offset = 0 sizes = [4, 3] strides = [3, 1] data =
-  // CHECK-NEXT: [[12,   12,   12],
-  // CHECK-NEXT:  [12,   12,   12],
-  // CHECK-NEXT:  [12,   12,   12],
-  // CHECK-NEXT:  [12,   12,   12]]
+  // CHECK-NEXT: [
+  // CHECK: [12, 12, 12],
+  // CHECK: [12, 12, 12],
+  // CHECK: [12, 12, 12],
+  // CHECK: [12, 12, 12]]
   call @spmm(%values, %col_indices, %row_pointers, %dense, %result) : 
     (memref<?xf32>, memref<?xi32>, memref<?xi32>, memref<?x?xf32>, memref<?x?xf32>) -> ()
   
